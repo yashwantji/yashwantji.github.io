@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="row-12 md-center">
+</br><h1>TO-DO LIST</h1>
+    <input type="text" placeholder="Add Task and Enter"><button class="remove"> <b>Clear All</b></button>
+    <ul>
+        <li><number></number>Item 1</li>
+        <li><number></number>Item 1</li>
+        <li><number></number>Item 1</li>
+    </ul>
+</div>
+</div>    
+<script>
+    function updateNumber(){
+        var lists = document.querySelectorAll("number");
+        for( var i = 0; i < lists.length; i++){
+            $(lists[i]).html(i+1 +".\t");
+        }
+    };
+    updateNumber();
+    $("li").click(function(){
+        $("li").css("text-decoration:line-through");
+    });
+    $(".remove").on("click", function(e){
+        $("li").fadeOut(500, function(){
+            $(this).remove();
+        });
+    });
+    $("input[type='text']").keypress(function(e){
+        if(e.which === 13){
+        var todoText = $(this).val();
+        $("ul").append("<li>"+"<number></number>"+todoText+"</li>");
+        updateNumber();
+        $(this).val("");
+        }
+    });
+    $("ul").on("click",function (e){
+        e.stopPropagation();
+        $(this).closest("li").fadeOut(500,function(){
+            $(this).remove();
+        });
+    });
+
+</script>
+</body>
+</html>
