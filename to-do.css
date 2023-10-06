@@ -79,3 +79,11 @@ ul li:nth-child(2n){
         background-position:0% 50% ;
     }
 }
+@media (max-width:786px){
+    .row-12 {
+        width: 85%;
+    }
+    ul {
+        margin-left: -15%;
+    }
+}
